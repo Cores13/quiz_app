@@ -8,7 +8,7 @@ import { fetchQuizQuestions } from './api';
 //types
 import { Difficulty, QuestionState } from './api';
 //styles
-import {GlobalStyle} from './App.style'
+import {GlobalStyle, Wrapper} from './App.style'
 
 const TOTAL_QUESTIONS = 10;
 
@@ -77,26 +77,28 @@ const App = () => {
     <>
     <GlobalStyle />
     <div className="App">
-      <h1>QUIZ</h1>
-      {gameOver || userAnswers.length === TOTAL_QUESTIONS ?(
-        <button className="start" onClick={startTrivia}>Start</button>
-      ) : null}
-      {!gameOver ? <p className="score"><strong>Score: {score}</strong>  </p> : null}
-      {loading && <p className="loading">Loading Questions...</p>}
-      {!loading && !gameOver && (
-        <QuestionCard 
-        questionNumber={number +1} 
-        totalQuestions={TOTAL_QUESTIONS} 
-        question={questions[number].question} 
-        answers={questions[number].answers} 
-        userAnswer={userAnswers ? userAnswers[number]: undefined}
-        callback={checkAnswer}
-        />
-      )}
-      {!loading && !gameOver && userAnswers.length === number +1 && number !== TOTAL_QUESTIONS -1 ?(
-        <button className="next" onClick={nextQuestion}>Next</button>
-      ) : null}
-    </div>
+    <Wrapper>
+        <h1>QUIZ</h1>
+        {gameOver || userAnswers.length === TOTAL_QUESTIONS ?(
+          <button className="start" onClick={startTrivia}>START</button>
+        ) : null}
+        {!gameOver ? <p className="score"><strong>SCORE: {score}</strong>  </p> : null}
+        {loading && <p className="loading">Loading Questions...</p>}
+        {!loading && !gameOver && (
+          <QuestionCard 
+          questionNumber={number +1} 
+          totalQuestions={TOTAL_QUESTIONS} 
+          question={questions[number].question} 
+          answers={questions[number].answers} 
+          userAnswer={userAnswers ? userAnswers[number]: undefined}
+          callback={checkAnswer}
+          />
+        )}
+        {!loading && !gameOver && userAnswers.length === number +1 && number !== TOTAL_QUESTIONS -1 ?(
+          <button className="next" onClick={nextQuestion}>Next</button>
+        ) : null}
+        </Wrapper>
+      </div>
     </>
   );
 }

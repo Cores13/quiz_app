@@ -19,11 +19,8 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'Encode Sans SC', sans-serif;
     }
-    /* h1, p {
-        color: white;
-    } */
 
-`
+`;
 
 export const Wrapper = styled.div`
     display: flex;
@@ -37,6 +34,42 @@ export const Wrapper = styled.div`
     .score {
         color: #fff;
         font-size: 2rem;
-        margin: 0;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-family: 'Tourney', cursive;
+        background-image: linear-gradient(180deg, #fff, #87f1ff);
+        background-size: 100%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+        filter: drop-shadow(2px 2px #0085a3);
+        font-size: 70px;
+        text-align: center;
+        margin: 20px;
+    }
+
+    .start, .next {
+        cursor: pointer;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 255, 255, 0.2));
+        border: 1px solid #0085a3;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        font-size: 1rem;
+        height: 40px;
+        margin: 20px 0;
+        padding: 0 40px;
+    }
+
+    .start {
+        min-width: 200px;
+    }
+
+    .loading{
+        margin-top: 70px;
+        font-size: 2rem;
     }
 `
