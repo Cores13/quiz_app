@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  font-family: 'Encode Sans SC', sans-serif;
+}
+h1 {
+  font-family: 'Tourney', cursive;
 }
 
 .App-logo {
