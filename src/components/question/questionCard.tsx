@@ -13,18 +13,18 @@ const QuestionCard: React.FC<IProps> = ({
     question, answers, callback, userAnswer, questionNumber, totalQuestions
 }) => (
     <div>
-        <p className="number">Question: { questionNumber }/ {totalQuestions}</p>
+        <p className="number"><strong>Question: </strong> { questionNumber }/ {totalQuestions}</p>
         <p dangerouslySetInnerHTML={{ __html: question}}></p>
         <div>
-            {answers.map((answer) => {
+            {answers.map((answer) => (
                 <div>
                     <button disabled={userAnswer} onClick={callback}>
-                        <span dangerouslySetInnerHTML={{ __html: answer}} />
+                        <span dangerouslySetInnerHTML={{ __html: answer}}></span>
                     </button>
                 </div>
-            })}
+            ))}
         </div>
     </div>
-)
+);
 
 export default QuestionCard;

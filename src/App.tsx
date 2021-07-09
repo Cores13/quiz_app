@@ -53,17 +53,19 @@ const App = () => {
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ?(
         <button className="start" onClick={startTrivia}>Start</button>
       ) : null}
-      <p className="score">Score: </p>
-      <p className="loading">Loading Questions...</p>
-      
-      {/* <QuestionCard 
-      questionNumber={number +1} 
-      totalQuestions={TOTAL_QUESTIONS} 
-      question={questions[number].question} 
-      answers={questions[number].answers} 
-      userAnswer={userAnswers ? userAnswers[number]: undefined}
-      callback={checkAnswer}
-      /> */}
+      {!gameOver ? <p className="score"><strong>Score:</strong>  </p> : null}
+      {loading && <p className="loading">Loading Questions...</p>}
+      {!loading && !gameOver && (
+        <QuestionCard 
+        questionNumber={number +1} 
+        totalQuestions={TOTAL_QUESTIONS} 
+        question={questions[number].question} 
+        answers={questions[number].answers} 
+        userAnswer={userAnswers ? userAnswers[number]: undefined}
+        callback={checkAnswer}
+        />
+      )}
+
       <button className="next" onClick={nextQuestion}>Next</button>
       {/* https://opentdb.com/api.php?amount=10 */}
     </div>
