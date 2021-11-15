@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import './App.css';
 import { useState } from "react";
 //components
@@ -9,6 +9,8 @@ import { fetchQuizQuestions } from "./api";
 import { Difficulty, QuestionState } from "./api";
 //styles
 import { GlobalStyle, Wrapper } from "./App.style";
+//contact form
+import { ContactForm } from "./components/contactForm/ContactForm";
 
 const TOTAL_QUESTIONS = 10;
 
@@ -25,6 +27,8 @@ const App = () => {
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
+  const [submited, setSubmited] = useState(false);
+
   const TOTAL_QUESTIONS = 11;
 
   console.log(questions);
@@ -177,6 +181,18 @@ const App = () => {
     }
   };
 
+  const getSubmited = async () => {
+    const submited = await localStorage.getItem("submited");
+    if (submited) {
+      setSubmited(true);
+      alert("You already submited your score!");
+    }
+  };
+
+  useEffect(() => {
+    getSubmited();
+  }, []);
+
   return (
     <>
       <GlobalStyle />
@@ -211,6 +227,9 @@ const App = () => {
             <button className='next' onClick={nextQuestion}>
               Next
             </button>
+          ) : null}
+          {userAnswers.length === TOTAL_QUESTIONS ? (
+            <ContactForm score={score} />
           ) : null}
         </Wrapper>
       </div>
